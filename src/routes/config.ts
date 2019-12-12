@@ -22,6 +22,7 @@ const menus: {
     menus: [
         // 菜单相关路由
         { key: '/app/dashboard/index', title: '首页', icon: 'mobile', component: 'Dashboard' },
+        // { key: '/app/strategy_table', title: 'Strategy', icon: 'copy', component: 'StrategyTable' },
         {
             key: '/app/ui',
             title: 'UI',
@@ -55,6 +56,15 @@ const menus: {
                     title: '动画案例',
                     component: 'ExampleAnimations',
                 },
+            ],
+        },
+        {
+            key: '/app/strategy_table',
+            title: 'Strategy',
+            icon: 'copy',
+            subs: [
+                { key: '/app/table/advancedTable', title: 'Strategy', component: 'AdvancedTable' },
+                { key: '/app/strategy_table1', title: 'Strategy-111', component: 'AsynStrategyTable' },
             ],
         },
         {

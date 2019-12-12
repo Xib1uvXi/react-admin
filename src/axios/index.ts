@@ -6,6 +6,7 @@ import { get, post } from './tools';
 import * as config from './config';
 
 export const getBbcNews = () => get({ url: config.NEWS_BBC });
+export const getStrategies = () => get({ url: config.STRATEGIES });
 
 export const npmDependencies = () =>
     axios

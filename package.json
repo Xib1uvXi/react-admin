@@ -104,6 +104,7 @@
         "commit": "git-cz",
         "release": "standard-version"
     },
+    "proxy":"http://localhost:9001",
     "config": {
         "commitizen": {
             "path": "node_modules/cz-conventional-changelog"

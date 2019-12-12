@@ -17,3 +17,8 @@ export const GIT_USER = 'https://api.github.com/user';
 // bbc top news
 export const NEWS_BBC =
     'https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=429904aa01f54a39a278a406acf50070';
+
+
+// strategies
+export const STRATEGIES =
+    '/api/v1/strategies';
