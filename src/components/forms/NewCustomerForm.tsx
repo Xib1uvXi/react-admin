@@ -4,7 +4,7 @@
 import React, { Component, Props } from 'react';
 import { Button, Modal, Form, Input } from 'antd';
 import { FormProps } from 'antd/lib/form';
-import { createStrategy } from '../../axios';
+import { createCustomer } from '../../axios';
 import { message } from 'antd';
 import { isEmpty } from '../../utils/index'
 const FormItem = Form.Item;
@@ -28,9 +28,14 @@ const CollectionCreateForm: any = Form.create()((props: CollectionCreateFormProp
             onOk={onCreate}
         >
             <Form layout="vertical">
-                <FormItem label="策略名">
+                <FormItem label="客户名">
                     {getFieldDecorator('title', {
-                        rules: [{ required: true, message: '请输入策略的标名字!' }],
+                        rules: [{ required: true, message: '请输入客户名字!' }],
+                    })(<Input />)}
+                </FormItem>
+                <FormItem label="本金">
+                    {getFieldDecorator('amount', {
+                        rules: [{ required: true, message: '请输入本金!' }],
                     })(<Input />)}
                 </FormItem>
             </Form>
@@ -42,17 +47,11 @@ type FlashProps = {
     onFlash: () => void;
 }
 
-class StrategyModalForm extends Component<FlashProps> {
+class NewCustomerForm extends Component<FlashProps> {
     state = {
         visible: false,
     };
     form: any;
-
-    createStrategyReq = async (name: string) => {
-        const resp = await createStrategy(name)
-        // todo
-        return resp
-    };
 
     showModal = () => {
         this.setState({ visible: true });
@@ -68,7 +67,8 @@ class StrategyModalForm extends Component<FlashProps> {
             }
 
             console.log('Received values of form: ', values);
-            const resp = await createStrategy(values.title);
+            
+            const resp = await createCustomer(values.title, Number(values.amount));
 
             if (isEmpty(resp && resp.data)) {
                 message.error("无法请求接口")
@@ -96,7 +96,7 @@ class StrategyModalForm extends Component<FlashProps> {
         return (
             <div>
                 <Button type="primary" onClick={this.showModal}>
-                    新建策略
+                    新建客户
                 </Button>
                 <CollectionCreateForm
                     ref={this.saveFormRef}
@@ -109,4 +109,4 @@ class StrategyModalForm extends Component<FlashProps> {
     }
 }
 
-export default StrategyModalForm;
+export default NewCustomerForm;

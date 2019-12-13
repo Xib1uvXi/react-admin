@@ -49,10 +49,30 @@ export const guest = () => get({ url: config.MOCK_AUTH_VISITOR });
 // ----------------------
 
 export const getStrategies = () => get({ url: config.STRATEGIES });
+export const getCustomers = () => get({ url: config.CUSTOMERS });
 
 export const createStrategy = (strategyName: string) => post({
     url: config.CREATE_STRATEGY,
     data: {
         name: strategyName,
+    },
+});
+
+export const createCustomer = (name: string, amount: any) => post({
+    url: config.CREATE_CUSTOMER,
+    data: {
+        name: name,
+        raw_amount: amount,
+    },
+});
+
+export const createOrder = (userID: number, userName: string, strategyID: number, strategyName: string, profit: number) => post({
+    url: config.CREATE_ORDER,
+    data: {
+        user_id: userID,
+        user_name: userName,
+        strategy_id: strategyID,
+        strategy_name: strategyName,
+        profit: profit,
     },
 });

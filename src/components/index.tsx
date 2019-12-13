@@ -7,9 +7,9 @@ import Loading from './widget/Loading';
 import BasicForm from './forms/BasicForm';
 import BasicTable from './tables/BasicTables';
 import AdvancedTable from './tables/AdvancedTables';
-import StrategyTable from './tables/StrategyTables';
 import AsynchronousTable from './tables/AsynchronousTable';
 import AsynStrategyTable from './tables/AsyncStrategyTables';
+import ConstomerTable from './tables/CustomerTable';
 import Echarts from './charts/Echarts';
 import Recharts from './charts/Recharts';
 import Icons from './ui/Icons';
@@ -39,7 +39,7 @@ const WysiwygBundle = Loadable({
 
 export default {
     AsynStrategyTable,
-    StrategyTable,
+    ConstomerTable,
     BasicForm,
     BasicTable,
     AdvancedTable,

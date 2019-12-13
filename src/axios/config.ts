@@ -26,3 +26,12 @@ export const STRATEGIES =
 // create strategy
 export const CREATE_STRATEGY =
     '/api/v1/strategy';
+
+// customers
+export const CUSTOMERS = '/api/v1/customers'
+
+// create customer
+export const CREATE_CUSTOMER = '/api/v1/customer'
+
+// create order
+export const CREATE_ORDER = '/api/v1/order'

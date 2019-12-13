@@ -68,6 +68,14 @@ const menus: {
             ],
         },
         {
+            key: '/app/customer_table',
+            title: 'Strategy',
+            icon: 'copy',
+            subs: [
+                { key: '/app/table/customerTable', title: '基础表格', component: 'ConstomerTable' },
+            ],
+        },
+        {
             key: '/app/table',
             title: '表格',
             icon: 'copy',
