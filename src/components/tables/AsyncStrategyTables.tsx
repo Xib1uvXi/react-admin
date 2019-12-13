@@ -2,10 +2,12 @@
  * Created by hao.cheng on 2017/4/16.
  */
 import React from 'react';
-import { Table, Button, Row, Col, Card } from 'antd';
+import { Table, Button, Row, Col, Card, message } from 'antd';
 import { getStrategies } from '../../axios';
 import BreadcrumbCustom from '../BreadcrumbCustom';
 import { TableRowSelection } from 'antd/lib/table';
+import StrategyModalForm from '../forms/NewStrategyForm';
+import { isEmpty } from '../../utils/index'
 import { async } from 'q';
 
 const columns = [
@@ -35,25 +37,29 @@ class AsynStrategyTable extends React.Component {
     componentDidMount() {
         this.start();
     }
-    start = async() => {
+    start = async () => {
         this.setState({ loading: true });
         const res = await getStrategies()
 
-        console.log('11111111',res)
-        // getStrategies().then((articles) => {
-        //     console.log("111111111111",articles)
-        //     this.setState({
-        //         data: articles,
-        //         loading: false,
-        //     });
-        // });
+        if (isEmpty(res && res.data)) {
+            message.error("没有得到数据")
+            this.setState({
+                loading: false,
+            });
+
+            return
+        }
+
+        this.setState({
+            data: res.data,
+            loading: false,
+        });
     };
     onSelectChange = (selectedRowKeys: string[]) => {
         console.log('selectedRowKeys changed: ', selectedRowKeys);
         this.setState({ selectedRowKeys });
     };
     render() {
-        console.log('xxx')
         const { loading, selectedRowKeys } = this.state;
         const rowSelection = {
             selectedRowKeys,
@@ -68,14 +74,9 @@ class AsynStrategyTable extends React.Component {
                         <div className="gutter-box">
                             <Card title="当前运行策略" bordered={false}>
                                 <div style={{ marginBottom: 16 }}>
-                                    <Button
-                                        type="primary"
-                                        onClick={this.start}
-                                        disabled={loading}
-                                        loading={loading}
-                                    >
-                                        Reload
-                                    </Button>
+                                    <div className="gutter-box">
+                                        <StrategyModalForm onFlash={this.start} />
+                                    </div>
                                     <span style={{ marginLeft: 8 }}>
                                         {hasSelected
                                             ? `Selected ${selectedRowKeys.length} items`

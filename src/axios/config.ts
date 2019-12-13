@@ -22,3 +22,7 @@ export const NEWS_BBC =
 // strategies
 export const STRATEGIES =
     '/api/v1/strategies';
+
+// create strategy
+export const CREATE_STRATEGY =
+    '/api/v1/strategy';

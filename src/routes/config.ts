@@ -63,8 +63,8 @@ const menus: {
             title: 'Strategy',
             icon: 'copy',
             subs: [
+                { key: '/app/strategyTable', title: '策略列表', component: 'AsynStrategyTable' },
                 { key: '/app/table/advancedTable', title: 'Strategy', component: 'AdvancedTable' },
-                { key: '/app/strategy_table1', title: 'Strategy-111', component: 'AsynStrategyTable' },
             ],
         },
         {

@@ -1,3 +1,5 @@
+import { isString, isArray, trim } from 'lodash'
+
 /**
  * Created by hao.cheng on 2017/4/28.
  */
@@ -26,3 +28,19 @@ export const queryString = () => {
  */
 export const checkLogin = (permits: any): boolean =>
     (process.env.NODE_ENV === 'production' && !!permits) || process.env.NODE_ENV === 'development';
+
+
+/**
+ * 是否为空
+ * @param {string|number|array|Object} val
+ */
+export const isEmpty = (val: string | number | any[] | object | undefined) => {
+  if (val === null || val === undefined || val === 'null' || val === 'undefined') return true
+
+  if (isArray(val) && val.length === 0) return true
+
+  if (isString(val) && trim(val) === '') return true
+
+  if (val instanceof Object && JSON.stringify(val) === '{}') return true
+  return false
+}
