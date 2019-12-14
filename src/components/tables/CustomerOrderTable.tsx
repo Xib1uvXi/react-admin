@@ -8,7 +8,6 @@ import { Table } from 'antd';
 import { ColumnProps } from 'antd/lib/table';
 import { getCustomerOrders } from '../../axios';
 import { isEmpty } from '../../utils/index'
-import { string } from 'prop-types';
 
 type QueryParamsProps = {
     query: any;
@@ -71,7 +70,7 @@ class CustomerOrderTable extends React.Component<QueryParamsProps> {
                     <Col className="gutter-row" md={24}>
                         <div className="gutter-box">
                             <Card title={this.state.info} bordered={false}>
-                                <Table key='key' columns={columns} dataSource={this.state.data} scroll={{ x: 1300 }} />
+                                <Table key="key" columns={columns} dataSource={this.state.data} scroll={{ x: 1300 }} />
                             </Card>
                         </div>
                     </Col>

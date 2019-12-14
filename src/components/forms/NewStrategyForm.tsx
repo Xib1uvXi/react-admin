@@ -1,7 +1,7 @@
 /**
  * Created by hao.cheng on 2017/4/15.
  */
-import React, { Component, Props } from 'react';
+import React, { Component } from 'react';
 import { Button, Modal, Form, Input } from 'antd';
 import { FormProps } from 'antd/lib/form';
 import { createStrategy } from '../../axios';

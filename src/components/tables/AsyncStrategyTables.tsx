@@ -2,13 +2,12 @@
  * Created by hao.cheng on 2017/4/16.
  */
 import React from 'react';
-import { Table, Button, Row, Col, Card, message } from 'antd';
+import { Table, Row, Col, Card, message } from 'antd';
 import { getStrategies } from '../../axios';
 import BreadcrumbCustom from '../BreadcrumbCustom';
 import { TableRowSelection } from 'antd/lib/table';
 import StrategyModalForm from '../forms/NewStrategyForm';
 import { isEmpty } from '../../utils/index'
-import { async } from 'q';
 
 const columns = [
     {
@@ -31,7 +30,6 @@ const columns = [
 class AsynStrategyTable extends React.Component {
     state = {
         selectedRowKeys: [], // Check here to configure the default column
-        loading: false,
         data: [],
     };
     componentDidMount() {
@@ -56,7 +54,6 @@ class AsynStrategyTable extends React.Component {
 
         this.setState({
             data: res.data,
-            loading: false,
         });
     };
     onSelectChange = (selectedRowKeys: string[]) => {
@@ -64,7 +61,7 @@ class AsynStrategyTable extends React.Component {
         this.setState({ selectedRowKeys });
     };
     render() {
-        const { loading, selectedRowKeys } = this.state;
+        const {selectedRowKeys } = this.state;
         const rowSelection = {
             selectedRowKeys,
             onChange: this.onSelectChange,

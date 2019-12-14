@@ -59,6 +59,13 @@ class ConstomerTable extends React.Component {
         createVisible: false,
         strategies: [],
     };
+
+
+    componentDidMount() {
+        this.getCustomersReq();
+        this.record = {}
+    }
+
     record: any;
     createform: any;
 
@@ -103,7 +110,7 @@ class ConstomerTable extends React.Component {
             // console.log('11111', this.state.strategies)
 
             this.state.strategies.forEach((element: any) => {
-                if (element.id == values.strategy[0]) {
+                if (element.id === values.strategy[0]) {
                     s = element
                 }
             });
@@ -129,9 +136,6 @@ class ConstomerTable extends React.Component {
     };
 
 
-    componentDidMount() {
-        this.getCustomersReq();
-    }
 
     getCustomersReq = async () => {
         const resp = await getCustomers();

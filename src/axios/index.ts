@@ -4,7 +4,6 @@
 import axios from 'axios';
 import { get, post } from './tools';
 import * as config from './config';
-import { string } from 'prop-types';
 
 export const getBbcNews = () => get({ url: config.NEWS_BBC });
 
