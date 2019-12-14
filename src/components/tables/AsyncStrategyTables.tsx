@@ -72,7 +72,7 @@ class AsynStrategyTable extends React.Component {
         const hasSelected = selectedRowKeys.length > 0;
         return (
             <div className="gutter-example">
-                <BreadcrumbCustom first="策略" second="策略列表" />
+                <BreadcrumbCustom first="策略列表" />
                 <Row gutter={16}>
                     <Col className="gutter-row" md={24}>
                         <div className="gutter-box">

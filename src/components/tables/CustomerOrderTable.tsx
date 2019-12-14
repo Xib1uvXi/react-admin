@@ -8,6 +8,7 @@ import { Table } from 'antd';
 import { ColumnProps } from 'antd/lib/table';
 import { getCustomerOrders } from '../../axios';
 import { isEmpty } from '../../utils/index'
+import { string } from 'prop-types';
 
 type QueryParamsProps = {
     query: any;
@@ -16,6 +17,7 @@ type QueryParamsProps = {
 class CustomerOrderTable extends React.Component<QueryParamsProps> {
     state = {
         data: [],
+        info: '',
     };
 
     componentDidMount() {
@@ -35,7 +37,7 @@ class CustomerOrderTable extends React.Component<QueryParamsProps> {
 
         const resp = await getCustomerOrders(id)
 
-        if (isEmpty(resp && resp.data)) {
+        if (isEmpty(resp && resp.data && resp.data.orders)) {
             message.error("没有得到数据")
             this.setState({
                 data: [],
@@ -43,7 +45,7 @@ class CustomerOrderTable extends React.Component<QueryParamsProps> {
             return
         }
 
-        resp.data.forEach((order: any) => {
+        resp.data.orders.forEach((order: any) => {
             order.key = order.id
             if (order.term <= 0) {
                 order.term = 0
@@ -56,7 +58,8 @@ class CustomerOrderTable extends React.Component<QueryParamsProps> {
         // console.log(resp.data)
 
         this.setState({
-            data: resp.data,
+            data: resp.data.orders,
+            info: "客户姓名：" + resp.data.name + "     本金：" + resp.data.principal + "     总盈利：" + resp.data.total_profit
         });
     };
 
@@ -67,7 +70,7 @@ class CustomerOrderTable extends React.Component<QueryParamsProps> {
                 <Row gutter={16}>
                     <Col className="gutter-row" md={24}>
                         <div className="gutter-box">
-                            <Card title="客户订单列表" bordered={false}>
+                            <Card title={this.state.info} bordered={false}>
                                 <Table key='key' columns={columns} dataSource={this.state.data} scroll={{ x: 1300 }} />
                             </Card>
                         </div>

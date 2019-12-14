@@ -231,7 +231,7 @@ class ConstomerTable extends React.Component {
                     onCreate={this.handleCreate}
                     strategies={this.state.strategies}
                 />
-                <BreadcrumbCustom first="客户" second="客户列表" />
+                <BreadcrumbCustom first="客户列表" />
                 <Row gutter={16}>
                     <Col className="gutter-row" md={24}>
                         <div className="gutter-box">
