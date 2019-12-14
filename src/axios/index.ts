@@ -51,6 +51,8 @@ export const guest = () => get({ url: config.MOCK_AUTH_VISITOR });
 export const getStrategies = () => get({ url: config.STRATEGIES });
 export const getCustomers = () => get({ url: config.CUSTOMERS });
 
+export const getCustomerOrders = (id: any) => get({ url: config.CUSTOMER_ORDERS + '/'+id });
+
 export const createStrategy = (strategyName: string) => post({
     url: config.CREATE_STRATEGY,
     data: {

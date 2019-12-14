@@ -35,3 +35,7 @@ export const CREATE_CUSTOMER = '/api/v1/customer'
 
 // create order
 export const CREATE_ORDER = '/api/v1/order'
+
+// cusomter order
+export const CUSTOMER_ORDERS =
+    '/api/v1/order';

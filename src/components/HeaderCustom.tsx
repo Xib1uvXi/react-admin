@@ -102,14 +102,6 @@ class HeaderCustom extends Component<HeaderCustomProps, HeaderCustomState> {
                     <Menu.Item key="pwa">
                         <PwaInstaller />
                     </Menu.Item>
-                    <Menu.Item key="full" onClick={this.screenFull}>
-                        <Icon type="arrows-alt" onClick={this.screenFull} />
-                    </Menu.Item>
-                    <Menu.Item key="1">
-                        <Badge count={25} overflowCount={10} style={{ marginLeft: 10 }}>
-                            <Icon type="notification" />
-                        </Badge>
-                    </Menu.Item>
                     <SubMenu
                         title={
                             <span className="avatar">

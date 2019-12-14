@@ -22,7 +22,7 @@ const CollectionCreateForm: any = Form.create()((props: CollectionCreateFormProp
     return (
         <Modal
             visible={visible}
-            title="创建新策略"
+            title="创建新客户"
             okText="创建"
             onCancel={onCancel}
             onOk={onCreate}

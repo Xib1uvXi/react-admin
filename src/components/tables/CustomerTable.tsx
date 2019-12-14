@@ -11,7 +11,6 @@ import NewCustomerForm from '../forms/NewCustomerForm';
 import { FormProps } from 'antd/lib/form';
 import { getStrategies } from '../../axios';
 import { createOrder } from '../../axios';
-import { any } from 'prop-types';
 const FormItem = Form.Item;
 
 type CollectionCreateFormProps = {
@@ -101,7 +100,7 @@ class ConstomerTable extends React.Component {
 
             let s: any
 
-            console.log('11111', this.state.strategies)
+            // console.log('11111', this.state.strategies)
 
             this.state.strategies.forEach((element: any) => {
                 if (element.id == values.strategy[0]) {
@@ -154,7 +153,9 @@ class ConstomerTable extends React.Component {
 
     };
 
-    onOrdersClick = () => { };
+    onOrdersClick = (record: any) => () => { 
+        window.location.href = '#/app/table/customerOrderTable?id=' + record.id
+    };
 
     searchInput: any;
     onInputChange = (e: any) => {
@@ -163,7 +164,7 @@ class ConstomerTable extends React.Component {
     render() {
         const columns = [
             {
-                title: 'Name',
+                title: '客户名',
                 dataIndex: 'name',
                 key: 'name',
                 filterDropdown: (
@@ -193,12 +194,12 @@ class ConstomerTable extends React.Component {
                     ),
             },
             {
-                title: 'Principal',
+                title: '本金',
                 dataIndex: 'principal',
                 key: 'principal',
             },
             {
-                title: 'Action',
+                title: '更多操作',
                 key: 'action',
                 render: (text: any, record: any) => {
 
@@ -206,16 +207,16 @@ class ConstomerTable extends React.Component {
 
                     return (<span>
                         <Button
-                            onClick={this.onOrdersClick}
+                            onClick={this.onOrdersClick(record)}
                         >
-                            Orders
+                            查看他的订单
                         </Button>
 
                         <span className="ant-divider" />
                         <Button
                             onClick={this.showCreateModal(record)}
                         >
-                            CreateOrder</Button>
+                            创建新订单</Button>
 
                     </span>);
                 },
@@ -230,11 +231,11 @@ class ConstomerTable extends React.Component {
                     onCreate={this.handleCreate}
                     strategies={this.state.strategies}
                 />
-                <BreadcrumbCustom first="策略" second="策略表格" />
+                <BreadcrumbCustom first="客户" second="客户列表" />
                 <Row gutter={16}>
                     <Col className="gutter-row" md={24}>
                         <div className="gutter-box">
-                            <Card title="当前运行策略" bordered={false}>
+                            <Card title="客户列表" bordered={false}>
                                 <div style={{ marginBottom: 16 }}>
                                     <div className="gutter-box">
                                         <NewCustomerForm onFlash={this.getCustomersReq} />
