@@ -2,7 +2,7 @@
  * Created by hao.cheng on 2017/4/16.
  */
 import React from 'react';
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import { Form, Icon, Input, Button, Checkbox, message } from 'antd';
 import { PwaInstaller } from '../widget';
 import { connectAlita } from 'redux-alita';
 import { RouteComponentProps } from 'react-router';
@@ -20,6 +20,7 @@ class Login extends React.Component<LoginProps> {
         setAlitaState({ stateName: 'auth', data: null });
     }
     componentDidUpdate(prevProps: LoginProps) {
+        // console.log('-------------------------debug', "go here", this.props)
         // React 16.3+弃用componentWillReceiveProps
         const { auth: nextAuth = {}, history } = this.props;
         // const { history } = this.props;
@@ -35,10 +36,17 @@ class Login extends React.Component<LoginProps> {
             if (!err) {
                 console.log('Received values of form: ', values);
                 const { setAlitaState } = this.props;
-                if (values.userName === 'admin' && values.password === 'admin')
+                if (values.userName === 'admin' && values.password === 'admin') {
                     setAlitaState({ funcName: 'admin', stateName: 'auth' });
-                if (values.userName === 'guest' && values.password === 'guest')
+                    return
+                }
+                    
+                if (values.userName === 'guest' && values.password === 'guest') {
                     setAlitaState({ funcName: 'guest', stateName: 'auth' });
+                    return
+                }
+
+                message.warn("账号密码错误")
             }
         });
     };
@@ -62,7 +70,7 @@ class Login extends React.Component<LoginProps> {
                             })(
                                 <Input
                                     prefix={<Icon type="user" style={{ fontSize: 13 }} />}
-                                    placeholder="管理员输入admin, 游客输入guest"
+                                    placeholder="请输入账号"
                                 />
                             )}
                         </FormItem>
@@ -73,7 +81,7 @@ class Login extends React.Component<LoginProps> {
                                 <Input
                                     prefix={<Icon type="lock" style={{ fontSize: 13 }} />}
                                     type="password"
-                                    placeholder="管理员输入admin, 游客输入guest"
+                                    placeholder="请输入密码"
                                 />
                             )}
                         </FormItem>
@@ -93,13 +101,6 @@ class Login extends React.Component<LoginProps> {
                             >
                                 登录
                             </Button>
-                            <p style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                <span>或 现在就去注册!</span>
-                                <span onClick={this.gitHub}>
-                                    <Icon type="github" />
-                                    (第三方登录)
-                                </span>
-                            </p>
                         </FormItem>
                     </Form>
                 </div>
