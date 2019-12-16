@@ -87,8 +87,8 @@ const columns: ColumnProps<any>[] = [
     { title: '利润', dataIndex: 'profit', key:'3' },
     { title: '出票金额', dataIndex: 'place_order_amount', key:'4' },
     { title: '上次累计出票金额', dataIndex: 'last_time_place_order_amount', key:'5'},
-    { title: '总累计出票金额', dataIndex: 'total_place_order_amount',  key:'6'},
-    { title: '预计本次中间盈利', dataIndex: 'win',  key:'7'},
+    { title: '总累计出票金额', dataIndex: 'total_place_order_amount', key:'6'},
+    { title: '预计本次中间盈利', dataIndex: 'win', key:'7'},
 ];
 
 export default CustomerOrderTable;

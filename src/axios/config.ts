@@ -43,3 +43,6 @@ export const CREATE_ORDER = '/api/v1/order'
 // cusomter order
 export const CUSTOMER_ORDERS =
     '/api/v1/order';
+
+// strategy config
+export const STRATEGY_CONFIG = '/api/v1/strategy/config'

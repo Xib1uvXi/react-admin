@@ -22,12 +22,20 @@ const menus: {
     menus: [
         // 菜单相关路由
         { key: '/app/dashboard/index', title: '首页', icon: 'mobile', component: 'Dashboard' },
-        // { key: '/app/strategy_table', title: 'Strategy', icon: 'copy', component: 'StrategyTable' },
-        { key: '/app/strategyTable', icon: 'copy', title: '策略', component: 'AsynStrategyTable' },
-        { key: '/app/table/customerTable', icon: 'copy',title: '客户', component: 'ConstomerTable' },
+        {
+            key: '/app/strategy',
+            title: '策略',
+            icon: 'copy',
+            subs: [
+                { key: '/app/strategyTable', icon: 'copy', title: '策略', component: 'AsynStrategyTable' },
+                { key: '/app/table/strategyConfig', icon: 'copy', title: '配置', component: 'StrategyConfig' },
+            ],
+        },
+
+        { key: '/app/table/customerTable', icon: 'copy', title: '客户', component: 'ConstomerTable' },
     ],
     others: [
-        { key: '/app/table/customerOrderTable', title: '客户订单列表', component: 'CustomerOrderTable', query:'?nothing=1' },
+        { key: '/app/table/customerOrderTable', title: '客户订单列表', component: 'CustomerOrderTable', query: '?nothing=1' },
     ], // 非菜单相关路由
 };
 

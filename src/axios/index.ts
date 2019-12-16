@@ -50,7 +50,7 @@ export const guest = () => get({ url: config.MOCK_AUTH_VISITOR });
 export const getStrategies = () => get({ url: config.STRATEGIES });
 export const getCustomers = () => get({ url: config.CUSTOMERS });
 
-export const getCustomerOrders = (id: any) => get({ url: config.CUSTOMER_ORDERS + '/'+id });
+export const getCustomerOrders = (id: any) => get({ url: config.CUSTOMER_ORDERS + '/' + id });
 
 export const createStrategy = (strategyName: string) => post({
     url: config.CREATE_STRATEGY,
@@ -75,5 +75,15 @@ export const createOrder = (userID: number, userName: string, strategyID: number
         strategy_id: strategyID,
         strategy_name: strategyName,
         profit: profit,
+    },
+});
+
+export const getStrateConfig = () => get({ url: config.STRATEGY_CONFIG })
+
+export const setStrateConfig = (cfg: any, append: boolean) => post({
+    url: config.STRATEGY_CONFIG,
+    data: {
+        configs: cfg,
+        append: append,
     },
 });

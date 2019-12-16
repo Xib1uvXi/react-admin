@@ -10,6 +10,7 @@ import AdvancedTable from './tables/AdvancedTables';
 import AsynchronousTable from './tables/AsynchronousTable';
 import AsynStrategyTable from './tables/AsyncStrategyTables';
 import ConstomerTable from './tables/CustomerTable';
+import StrategyConfig from './tables/StrategyConfig';
 import CustomerOrderTable from './tables/CustomerOrderTable';
 import Echarts from './charts/Echarts';
 import Recharts from './charts/Recharts';
@@ -39,6 +40,7 @@ const WysiwygBundle = Loadable({
 });
 
 export default {
+    StrategyConfig,
     CustomerOrderTable,
     AsynStrategyTable,
     ConstomerTable,
