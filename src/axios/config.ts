@@ -46,3 +46,6 @@ export const CUSTOMER_ORDERS =
 
 // strategy config
 export const STRATEGY_CONFIG = '/api/v1/strategy/config'
+
+// running
+export const RUNNING = '/api/v1/running'

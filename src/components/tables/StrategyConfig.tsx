@@ -7,6 +7,7 @@ import { getStrateConfig, getStrategies } from '../../axios';
 import BreadcrumbCustom from '../BreadcrumbCustom';
 import StrategyConfigModalForm from '../forms/NewStrategyConfigForm';
 import { isEmpty } from '../../utils/index'
+import RunningModal from './ModalRunning';
 
 const columns = [
     {
@@ -113,7 +114,7 @@ class StrategyConfig extends React.Component {
                                     </div>
 
                                     <div className="gutter-box">
-                                        <StrategyConfigModalForm onFlash={this.start} data={this.state.strategies} delStrategy={this.delStrategy} />
+                                        <RunningModal onFlash={this.start} data={this.state.strategies} />
                                     </div>
 
                                 </div>
@@ -131,3 +132,5 @@ class StrategyConfig extends React.Component {
 }
 
 export default StrategyConfig;
+
+

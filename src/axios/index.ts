@@ -87,3 +87,8 @@ export const setStrateConfig = (cfg: any, append: boolean) => post({
         append: append,
     },
 });
+
+export const running = () => post({
+    url: config.RUNNING,
+    data: {},
+})
