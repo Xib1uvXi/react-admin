@@ -92,3 +92,12 @@ export const running = () => post({
     url: config.RUNNING,
     data: {},
 })
+
+export const win = (id: any) => post({
+    url: config.WIN,
+    data: {
+        sid: id,
+    },
+})
+
+export const report = () => get({ url: config.REPORT })

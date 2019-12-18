@@ -49,3 +49,9 @@ export const STRATEGY_CONFIG = '/api/v1/strategy/config'
 
 // running
 export const RUNNING = '/api/v1/running'
+
+// win
+export const WIN = '/api/v1/win'
+
+// report
+export const REPORT = '/api/v1/report'

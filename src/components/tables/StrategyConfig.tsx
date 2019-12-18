@@ -6,6 +6,7 @@ import { Table, Row, Col, Card, message } from 'antd';
 import { getStrateConfig, getStrategies } from '../../axios';
 import BreadcrumbCustom from '../BreadcrumbCustom';
 import StrategyConfigModalForm from '../forms/NewStrategyConfigForm';
+import WinModalForm from '../forms/WinForm';
 import { isEmpty } from '../../utils/index'
 import RunningModal from './ModalRunning';
 
@@ -37,6 +38,7 @@ class StrategyConfig extends React.Component {
         data: [],
         strategies: [],
         tmp: [],
+        disabled: true,
     };
     componentDidMount() {
         this.getStrategiesReq()
@@ -60,13 +62,13 @@ class StrategyConfig extends React.Component {
         });
 
         // console.log('----------------debug 1', resp.data )
-        this.setState({ strategies: resp.data, tmp: resp.data });
+        this.setState({ strategies: resp.data});
     };
 
     getStrategyName = (id: any) => {
         let name = ""
 
-        this.state.tmp.forEach((s: any) => {
+        this.state.strategies.forEach((s: any) => {
             if (s.id === id) {
                 name = s.name
             }
@@ -98,6 +100,7 @@ class StrategyConfig extends React.Component {
 
         this.setState({
             data: res.data,
+            disabled: false,
         });
     };
     render() {
@@ -109,12 +112,16 @@ class StrategyConfig extends React.Component {
                         <div className="gutter-box">
                             <Card title="当前已配置策略列表" bordered={false}>
                                 <div style={{ marginBottom: 16 }}>
-                                    <div className="gutter-box hhh" >
+                                    <div className="gutter-box hhh">
                                         <StrategyConfigModalForm onFlash={this.start} data={this.state.strategies} delStrategy={this.delStrategy} />
                                     </div>
 
+                                    <div className="gutter-box hhh">
+                                        <RunningModal onFlash={this.start} data={this.state.strategies} disabled={this.state.disabled} cfg={this.state.data} />
+                                    </div>
+
                                     <div className="gutter-box">
-                                        <RunningModal onFlash={this.start} data={this.state.strategies} />
+                                        <WinModalForm onFlash={this.start} data={this.state.strategies} delStrategy={this.delStrategy} disabled={this.state.disabled} />
                                     </div>
 
                                 </div>

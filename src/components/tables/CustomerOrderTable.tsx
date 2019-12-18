@@ -52,6 +52,11 @@ class CustomerOrderTable extends React.Component<QueryParamsProps> {
             } else {
                 order.win = order.term * order.profit
             }
+
+            if (order.win_profit !== 0) {
+                order.win = order.win_profit
+            }
+
         });
 
         // console.log(resp.data)

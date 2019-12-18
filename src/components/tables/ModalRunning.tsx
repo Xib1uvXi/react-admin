@@ -9,6 +9,8 @@ import { isEmpty } from '../../utils';
 
 type FlashProps = {
     data: any;
+    cfg: any;
+    disabled: boolean,
     onFlash: () => void;
 }
 
@@ -25,7 +27,7 @@ class RunningModal extends Component<FlashProps> {
     };
     handleOk3 = async () => {
         this.setState({ loading3: true });
-        
+
         const resp = await running()
 
         if (isEmpty(resp && resp.data)) {
@@ -39,7 +41,7 @@ class RunningModal extends Component<FlashProps> {
             this.setState({ loading3: false, visible3: false })
             return
         }
-        
+
         this.setState({ loading3: false, visible3: false });
         message.info(resp.data)
     };
@@ -47,10 +49,19 @@ class RunningModal extends Component<FlashProps> {
         this.setState({ visible3: false });
     };
 
+    show = () => {
+
+        return this.props.cfg.map((c :any) => {
+            return (
+            <p>{"*  " + "策略：" + c.sname + "  期数： " +c.term + "  赔率： " + c.odds}</p>
+            )
+        });
+    }
+
     render() {
         return (
             <div>
-                <Button type="primary" onClick={this.showModal3}>
+                <Button type="primary" onClick={this.showModal3} disabled={this.props.disabled}>
                     Running
                 </Button>
                 <Modal
@@ -77,11 +88,8 @@ class RunningModal extends Component<FlashProps> {
                         </Button>,
                     ]}
                 >
-                    <p>Some contents...</p>
-                    <p>Some contents...</p>
-                    <p>Some contents...</p>
-                    <p>Some contents...</p>
-                    <p>Some contents...</p>
+
+                    {this.show()}
                 </Modal>
             </div>
         );
